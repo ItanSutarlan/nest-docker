@@ -1,10 +1,11 @@
 import { Test, TestingModule } from '@nestjs/testing';
 import { AuthController } from './auth.controller';
 import { AuthService } from './auth.service';
-import { userStub } from '../user/stubs/user.stub';
+import { userStub } from '../users/stubs/user.stub';
 import { Types } from 'mongoose';
 import { LoginDto, RegisterDto } from './dto';
-import { UserService } from '../user/user.service';
+import { UserService } from '../users/user.service';
+import { ThrottlerModule } from '@nestjs/throttler';
 
 describe('AuthController', () => {
   let authController: AuthController;
@@ -15,6 +16,14 @@ describe('AuthController', () => {
 
   beforeEach(async () => {
     const module: TestingModule = await Test.createTestingModule({
+      imports: [
+        ThrottlerModule.forRoot([
+          {
+            ttl: 60,
+            limit: 10,
+          },
+        ]),
+      ],
       controllers: [AuthController],
       providers: [
         {
