@@ -1,5 +1,9 @@
 import * as bcrypt from 'bcrypt';
-import { Injectable, UnauthorizedException } from '@nestjs/common';
+import {
+  BadRequestException,
+  Injectable,
+  UnauthorizedException,
+} from '@nestjs/common';
 import { InjectModel } from '@nestjs/mongoose';
 import { User, UserDocument } from './schemas/user.schema';
 import { Model } from 'mongoose';
@@ -16,7 +20,7 @@ export class UserService {
     });
 
     if (user) {
-      throw new UnauthorizedException('Invalid credentials');
+      throw new BadRequestException('Username or email is registered');
     }
 
     const hashedPassword = await bcrypt.hash(password, 10);

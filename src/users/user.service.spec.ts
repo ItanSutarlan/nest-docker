@@ -4,7 +4,7 @@ import { UserService } from './user.service';
 import { getModelToken } from '@nestjs/mongoose';
 import mongoose, { Model } from 'mongoose';
 import { userStub } from './stubs/user.stub';
-import { UnauthorizedException } from '@nestjs/common';
+import { BadRequestException, UnauthorizedException } from '@nestjs/common';
 import { User } from './schemas/user.schema';
 
 describe('UserService', () => {
@@ -44,7 +44,7 @@ describe('UserService', () => {
 
       // Action & Assert
       await expect(service.create(userStub())).rejects.toThrow(
-        UnauthorizedException,
+        BadRequestException,
       );
       expect(model.findOne).toHaveBeenCalledWith({
         $or: [{ username: userStub().username }, { email: userStub().email }],
