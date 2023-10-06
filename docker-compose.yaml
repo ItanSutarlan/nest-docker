@@ -4,7 +4,7 @@
 version: '3.8'
 services:
   # app service for your backend
-  youapp-server:
+  server:
     container_name: youapp-server
     build:
       context: ./
@@ -16,12 +16,12 @@ services:
       DATABASE_URI: mongodb://database:27017
       ACCESS_TOKEN_KEY: 8c8d245f91b6b6ea503629182e39e7812d69cd1acd30fe2c04860a403b675d9209e4a691db54d28b79dfa317f17b913724a1e9a38db280b2fb7652a7788b550b
     ports:
-      - '4000:4000'
+      - '3000:3000'
     depends_on:
-      - mongodb
+      - database
 
   # start the mongodb service as container
-  mongodb:
+  database:
     image: mongo:latest
     container_name: mongodb
     ports:
