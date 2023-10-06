@@ -24,15 +24,37 @@
 
 ## Description
 
-[Nest](https://github.com/nestjs/nest) framework TypeScript starter repository.
+This application is built with TypeScript, [Nest](https://github.com/nestjs/nest), MongoDB, Docker, and Swagger for the API documentation.
 
-## Installation
+## Features
+
+- User authentication (JWT)
+- Error handling and validation
+- MongoDB database integration
+- Docker integration
+- OpenAPI using Swagger
+- Error handling and validation
+- Easy-to-customize structure
+
+## Getting Started
+You can run this app locally with or without using docker.
+
+### Running the Application Locally without Using Docker
+
+#### Prerequisites
+- Node.js and npm installed on your machine.
+- MongoDB installed and running.
+- Create a `.env` file based on the provided `.env-example` file, filling in the necessary MongoDB connection details and JWT access token key.
+
+#### Installation
 
 ```bash
+$ git clone https://github.com/ItanSutarlan/youapp-backend.git
+$ cd youapp-backend
 $ npm install
 ```
 
-## Running the app
+#### Running the app
 
 ```bash
 # development
@@ -45,18 +67,30 @@ $ npm run start:dev
 $ npm run start:prod
 ```
 
-## Test
+Your NestJS application will be running, and you can access the API documentation at: [http://localhost:3000/api](http://localhost:3000/api)
+
+
+#### Test
 
 ```bash
 # unit tests
 $ npm run test
 
-# e2e tests
-$ npm run test:e2e
-
-# test coverage
-$ npm run test:cov
 ```
+
+### Running the Application Locally Using Docker
+
+#### Prerequisites
+- Docker installed on your local machine.
+
+#### Running the app
+```bash
+$ git clone https://github.com/ItanSutarlan/youapp-backend.git
+$ cd youapp-backend
+$ docker compose up
+```
+
+Your NestJS application will be running inside a Docker container, and you can access the API documentation at: [http://localhost:3000/api](http://localhost:3000/api)
 
 ## Support
 
