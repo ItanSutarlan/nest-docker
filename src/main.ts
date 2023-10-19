@@ -19,6 +19,7 @@ async function bootstrap() {
     .setTitle('YouApp OpenAPI')
     .setDescription('The API documentation for YouApp RESTful application')
     .setVersion('1.0')
+    .addBearerAuth()
     .build();
   const document = SwaggerModule.createDocument(app, config);
   SwaggerModule.setup('api', app, document);
